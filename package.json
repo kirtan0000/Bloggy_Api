@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-    "start": "nodemon index.ts"
+    "start": "set NODE_ENV=development&&nodemon index.ts",
+    "prod": "export NODE_ENV=production&&pm2 start index.ts"
   },
   "keywords": [],
   "author": "Kirtan Magan",

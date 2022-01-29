@@ -43,7 +43,7 @@ router.post("/upload-pfp", async (req: Request, res: Response) => {
     },
     fileFilter: function (req: Request, file: any, cb: any) {
       var ext = path.extname(file.originalname);
-      if (ext !== ".png" && ext.toLowerCase() !== ".jpg" && ext !== ".jpeg") {
+      if (ext.toLowerCase() !== ".png" && ext.toLowerCase() !== ".jpg" && ext.toLowerCase() !== ".jpeg") {
         res.json({ success: false, message: "Only images are allowed." });
         return;
       }
