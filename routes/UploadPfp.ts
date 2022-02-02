@@ -28,7 +28,7 @@ router.post('/upload-pfp', async (req: Request, res: Response) => {
 
   const upload = multer({
     storage: storage,
-    limits: { fileSize: 3 * 1024 * 1024 }, // 3 MB file limit
+    limits: { fileSize: 1 * 1024 * 1024 }, // 1 MB file limit
     fileFilter: function (req: Request, file: any, cb: any) {
       var ext = path.extname(file.originalname)
       if (
