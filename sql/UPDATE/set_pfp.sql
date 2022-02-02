@@ -1,3 +1,4 @@
 UPDATE users
 SET user_pfp = ?
-WHERE username = ?
+WHERE email = ?
+     OR username = ?

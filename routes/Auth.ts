@@ -123,7 +123,9 @@ router.get('/submit-verification', async (req: Request, res: Response) => {
     // Expire the token and make the user valid to log in
     await run_query(rep([veri_data.email], 'UPDATE/set_valid_user.sql'))
     await run_query(rep([veri_data.email], 'UPDATE/expire_code.sql'))
-    await run_query(rep([defaultPfp, veri_data.email], 'UPDATE/set_pfp.sql'))
+    await run_query(
+      rep([defaultPfp, veri_data.email, 'non-existent'], 'UPDATE/set_pfp.sql') // Use 'non-existent' because file also checks for username, which we don't have
+    )
     res.status(200).json({
       success: true,
       message: 'Success!',

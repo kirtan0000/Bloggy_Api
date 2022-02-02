@@ -120,7 +120,8 @@ router.post('/change-pfp', async (req: Request, res: Response) => {
   if (!image_exists) {
     res.status(404).json({
       success: false,
-      message: "The image doesn't exist. Please try adding a VALID image id. (This id could have been already used, in that case, upload a pfp from the route '/upload-pfp' and try again.)",
+      message:
+        "The image doesn't exist. Please try adding a VALID image id. (This id could have been already used, in that case, upload a pfp from the route '/upload-pfp' and try again.)",
       status_code: 404
     })
     return
@@ -128,7 +129,9 @@ router.post('/change-pfp', async (req: Request, res: Response) => {
 
   // Now that we passed all of the checks, create a url for the image and update the users profile picture with that url, then delete the temporary pfp id used for checks
   const pfp_url = `${CurrentServer}/pfps/${image_id}.jpg`
-  await run_query(rep([pfp_url, username], 'UPDATE/set_pfp.sql')) // Set pfp
+  await run_query(
+    rep([pfp_url, 'non-existent', username], 'UPDATE/set_pfp.sql')
+  ) // Set pfp. We use 'non-existent' because this file also checks for email, which we don't have
   await run_query(rep([image_id], 'DELETE/delete_temp_pfp.sql')) // Delete temp pfp
 
   // Send different results depending on the status of the new JWT token
