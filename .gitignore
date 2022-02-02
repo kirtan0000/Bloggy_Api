@@ -1,3 +1,5 @@
 .env
 node_modules/
+public/pfps/*
+!public/**/default.jpg
 dist/

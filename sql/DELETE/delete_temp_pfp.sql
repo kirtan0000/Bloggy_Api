@@ -1,0 +1,2 @@
+DELETE FROM pfps
+WHERE id = ?

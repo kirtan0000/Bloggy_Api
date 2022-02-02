@@ -1,3 +1,5 @@
-SELECT user_pfp
+SELECT user_pfp,
+     email,
+     username
 FROM users
 WHERE refresh = ?

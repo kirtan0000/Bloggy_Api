@@ -1,6 +1,4 @@
-SELECT username,
-     email,
-     is_valid
+SELECT *
 FROM users
 WHERE username = ?
      OR email = ?
